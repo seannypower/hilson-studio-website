@@ -1,0 +1,71 @@
+---
+const nav = [
+  {
+    label: 'Studio',
+    href: '/about',
+    children: [
+      { label: 'Sounds', href: '/sounds' },
+      { label: 'Space', href: '/space' },
+      { label: 'Staff', href: '/staff' },
+      { label: 'Gear', href: '/the-gear' },
+      { label: 'Cost', href: '/cost' },
+    ],
+  },
+  {
+    label: 'Who are you?',
+    href: '/artistsbands',
+    children: [
+      { label: 'Artist/Band', href: '/artistsbands' },
+      { label: 'Songwriter', href: '/songwriters' },
+      { label: 'Musician', href: '/artistsbands-1' },
+      { label: 'Producer', href: '/producer2' },
+    ],
+  },
+  {
+    label: 'Video',
+    href: '/liveatthehilson',
+    children: [
+      { label: 'Live At The Hilson Studio', href: '/liveatthehilson' },
+      { label: 'Video Production', href: '/video-production' },
+    ],
+  },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu</button>
+<nav class="main-nav" id="main-nav">
+  <ul>
+    {nav.map((item) => (
+      <li class:list={{ 'has-submenu': !!item.children }}>
+        <a href={item.href}>{item.label}</a>
+        {item.children && (
+          <ul class="submenu">
+            {item.children.map((child) => (
+              <li><a href={child.href}>{child.label}</a></li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('main-nav');
+  toggle?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(!!isOpen));
+  });
+
+  // Tap-to-open submenus on touch/mobile; hover still works via CSS on desktop.
+  document.querySelectorAll('.main-nav li.has-submenu > a').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      if (window.innerWidth <= 780) {
+        e.preventDefault();
+        link.parentElement?.classList.toggle('submenu-open');
+      }
+    });
+  });
+</script>

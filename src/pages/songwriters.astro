@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SoundCloudEmbed from '../components/SoundCloudEmbed.astro';
+import Gallery from '../components/Gallery.astro';
+
+const galleryItems = [
+  { src: '/images/song-01.jpg' },
+  { src: '/images/song-02.jpg' },
+  { src: '/images/artist-04.jpg' },
+  { src: '/images/artist-01.jpg' },
+  { src: '/images/artist-05.jpg' },
+  { src: '/images/song-03.jpg' },
+  { src: '/images/song-04.jpg' },
+  { src: '/images/artist-03.jpg' },
+  { src: '/images/song-05.jpg' },
+];
+---
+
+<Layout title="Songwriter" description="Songwriter demo production at The Hilson Studio, Nashville — from rough mock-up to full production demo.">
+  <section class="page-hero container">
+    <p class="lede">Bring your songs to life</p>
+    <h1>Songwriter Demos</h1>
+  </section>
+
+  <section class="block container prose">
+    <p>You are the front lines. Every day, you relive every breakup, flat tire, dear loss, and wild victory, capturing the human experience in lyric and melody. But you need to get those ideas represented so those unimaginative suits can see through your iPhone worktape to the heart of the song you've written.</p>
+    <p>Enter The Hilson Studio. We can take your rough mock-up recording and turn it into a full production demo, ready to be pitched to artists, labels, and publishers. It can be as simple as a guitar + vocal, an electronic loop over some keys, or the sound of a full band performing your song as you wrote it.</p>
+    <p>Most songs can be turned around in just a few days.</p>
+  </section>
+
+  <section class="block container">
+    <Gallery items={galleryItems} />
+  </section>
+
+  <section class="block container prose">
+    <blockquote class="testimonial">
+      <p>"The Hilson Studio gets things done faster and better than any other place I've worked at in Nashville. They always takes my song to a place I didn't know it could even go."</p>
+      <cite>— Steve Lester, Nashville singer/songwriter</cite>
+    </blockquote>
+    <blockquote class="testimonial">
+      <p>"When I play songs for people that Sean [owner/engineer] has recorded, they ALWAYS get pointed out for being great quality and everything the song needed to be."</p>
+      <cite>— Katie Austin, Nashville singer/songwriter</cite>
+    </blockquote>
+  </section>
+
+  <section class="block container prose">
+    <p>Check out a few samples of songwriter demos, including before & afters.</p>
+  </section>
+
+  <section class="block container prose">
+    <h2>Full Demos</h2>
+    <SoundCloudEmbed url="https://api.soundcloud.com/playlists/193022396?secret_token=s-j4j2G" title="Full Demos" />
+  </section>
+
+  <section class="block container prose">
+    <h2>Before & Afters</h2>
+    <SoundCloudEmbed url="https://api.soundcloud.com/playlists/193738132" title="Before & Afters" />
+  </section>
+
+  <section class="block container prose">
+    <h2>Acoustic Demos</h2>
+    <SoundCloudEmbed url="https://api.soundcloud.com/playlists/193758143?secret_token=s-2K7ZZ" title="Acoustic Demos" />
+  </section>
+</Layout>

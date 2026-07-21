@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const slides = [
+  '/images/home-01.jpg',
+  '/images/home-02.jpg',
+  '/images/home-03.jpg',
+  '/images/home-04.jpg',
+  '/images/home-05.jpg',
+  '/images/home-06.jpg',
+  '/images/home-07.jpg',
+];
+---
+
+<Layout title="Home" bare>
+  <section class="splash">
+    <div class="splash-bg" id="splash-bg">
+      {slides.map((src, i) => (
+        <img src={src} alt="" class:list={{ 'is-active': i === 0 }} />
+      ))}
+    </div>
+    <div class="splash-content">
+      <h1>The Hilson Studio</h1>
+      <p>Nashville's one stop shop for music makers.</p>
+      <a class="splash-cta" href="/about">Come on in</a>
+      <div class="splash-social">
+        <a href="https://www.facebook.com/TheHilsonStudio/" aria-label="Facebook" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.25c0-.86.24-1.45 1.48-1.45H16.5V4.14C16.24 4.1 15.32 4 14.25 4 12 4 10.5 5.32 10.5 7.95V10.5H8v3h2.5V21h3z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ count: slides.length }}>
+  let idx = 0;
+  const imgs = document.querySelectorAll('#splash-bg img');
+  if (imgs.length > 1) {
+    setInterval(() => {
+      imgs[idx].classList.remove('is-active');
+      idx = (idx + 1) % count;
+      imgs[idx].classList.add('is-active');
+    }, 5000);
+  }
+</script>

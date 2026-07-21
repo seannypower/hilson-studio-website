@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.astro';
+
+const galleryItems = [1, 2, 3, 4, 5, 6, 7, 8, 9].map((n) => ({ src: `/images/holiday-0${n}.jpg` }));
+---
+
+<Layout title="Holidays at The Hilson" description="Seasonal live video shoot packages at The Hilson Studio, Nashville.">
+  <section class="stub-note container" style="margin-top:2rem;">
+    This is a legacy seasonal promo page from the original site (not linked from the current nav) — pricing and the coupon code below are from a past holiday campaign and should be reviewed before reactivating.
+  </section>
+
+  <section class="page-hero container">
+    <h1>Holidays at the Hilson</h1>
+    <p class="lede">Your live performance with studio quality audio and 4K video.</p>
+  </section>
+
+  <section class="block container">
+    <div class="price-cards" style="max-width: 700px; margin: 0 auto;">
+      <div class="price-card">
+        <h4>Acoustic</h4>
+        <p>1 song - $350<br />2 or more songs - $250 each</p>
+      </div>
+      <div class="price-card">
+        <h4>Full Band</h4>
+        <p>1 song - $600<br />2 or more songs - $400 each</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block container">
+    <Gallery items={galleryItems} />
+  </section>
+
+  <section class="block container prose center">
+    <h2>Interested in creating something that isn't on the menu?</h2>
+    <p>Get in touch.</p>
+  </section>
+
+  <section class="block container">
+    <form class="site-form" name="holidays" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks" style="margin: 0 auto;">
+      <input type="hidden" name="form-name" value="holidays" />
+      <p class="hp-field">
+        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+      </p>
+
+      <div class="two-col" style="gap: 1.4rem;">
+        <div>
+          <label for="h-first">First Name <span class="req">(required)</span></label>
+          <input type="text" id="h-first" name="first_name" required />
+        </div>
+        <div>
+          <label for="h-last">Last Name <span class="req">(required)</span></label>
+          <input type="text" id="h-last" name="last_name" required />
+        </div>
+      </div>
+
+      <div>
+        <label for="h-email">Email <span class="req">(required)</span></label>
+        <input type="email" id="h-email" name="email" required />
+      </div>
+
+      <div>
+        <label><input type="checkbox" name="newsletter" value="yes" /> Sign up for news and updates</label>
+      </div>
+
+      <div>
+        <label for="h-phone">Phone <span class="req">(required)</span></label>
+        <input type="tel" id="h-phone" name="phone" required />
+      </div>
+
+      <div>
+        <label for="h-members">How many members are in your act? <span class="req">(required)</span></label>
+        <select id="h-members" name="members" required>
+          <option value="">Select an option</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="h-notes">Anything else you'd like to mention?</label>
+        <textarea id="h-notes" name="notes"></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+</Layout>

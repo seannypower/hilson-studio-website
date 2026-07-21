@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const rooms = [
+  { src: '/images/space-01.jpg', title: 'The basement', text: 'The studio is partially below ground level, which is great for keeping unwanted sounds out, and the rock and roll in.' },
+  { src: '/images/space-02.jpg', title: 'House Kit', text: 'The main house kit is a Taye Studio Maple. Here shown with a 70s Slingerland 13" tom.' },
+  { src: '/images/space-03.jpg', title: 'The Drum Corner', text: "The kit lives in a treated corner of the studio to promote clarity in the overhead mics, and is usually gobo'd in." },
+  { src: '/images/space-04.jpg', title: 'The live room', text: 'Weighing in at 19\'x18\'x9" (WxLxH), the live room is exactly that - "live" sounding. It brings a natural reverb to drums and other instruments as needed but can be deadened as well.' },
+  { src: '/images/space-05.jpg', title: 'Amp Wall', text: "For that wall-of-sound, we've got a great selection of tube amps and speaker cabs." },
+  { src: '/images/space-06.jpg', title: 'The Tracking Room', text: 'Plenty of space to flesh out some musical ideas in the live room.' },
+  { src: '/images/space-07.jpg', title: 'The Kitchenette', text: "The kitchenette has a mini fridge stocked with soda, water, and if you're lucky, a couple of leftover beers from a long tracking session. There is also a bathroom off the kitchen." },
+  { src: '/images/space-08.jpg', title: 'The control room', text: "This is a relatively dead acoustic environment, outfitted fully with acoustic treatment on all 4 walls and the ceiling. This is where you can critically hear what you're capturing." },
+  { src: '/images/space-09.jpg', title: 'The control room (rear)', text: 'Every studio needs a good studio couch. This one is great for writing on, or taking a nap while waiting for someone to finish dialing in their parts.' },
+  { src: '/images/space-10.jpg', title: 'The Vocal Booth', text: "The vocal booth is cozy (4.5'x6') but has mood lighting and is a great quiet place to give your best vocal performance. No windows on the doors, so you can get as weird in there as you want." },
+  { src: '/images/space-11.jpg', title: 'The gear rack', text: "It's basically a spaceship that gets your sound into the computer. Don't worry about all those knobs, you're in good hands." },
+  { src: '/images/space-12.jpg', title: 'Guitar Rack', text: "This has a rotating cast of axes. Someone's always borrowing or loaning something, but you can visit the gear page to see what's always around." },
+  { src: '/images/space-13.jpg', title: 'Windows 95', text: "We're not using windows 95, but you'll feel 95% better getting some daylight in your life. It's a great way to ward off seasonal affective disorder." },
+  { src: '/images/space-14-pano.jpg', title: 'Tracking room pano', text: 'A 360 view of the tracking space.' },
+  { src: '/images/space-15.jpg', title: 'Eqs', text: 'The studio is full of great places to get artsy and bump up your insta-game.' },
+];
+
+const buildPhotos = ['space-16', 'space-17', 'space-18', 'space-19', 'space-20', 'space-21'].map((n) => `/images/${n}.jpg`);
+---
+
+<Layout title="Space" description="A tour of The Hilson Studio's live room, control room, drum corner, vocal booth, and more.">
+  <section class="page-hero container">
+    <h1>Virtual Tour</h1>
+  </section>
+
+  <section class="block container">
+    <div class="embed-wrap embed-16-9" style="max-width: 900px; margin: 0 auto;">
+      <iframe src="https://www.youtube.com/embed/5MTdLAc3s78?wmode=opaque&enablejsapi=1" title="Virtual tour of The Hilson Studio" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="block container">
+    <h2 class="prose center">Photos</h2>
+    <div class="gallery-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+      {rooms.map((r) => (
+        <figure>
+          <img src={r.src} alt={r.title} loading="lazy" style="height: 200px;" />
+          <figcaption class="gallery-caption"><strong>{r.title}</strong><br />{r.text}</figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="form-note" style="text-align:center; margin-top:2rem;">
+      All photos by Gabe Ford @ <a href="http://www.fordphotographs.com/" target="_blank" rel="noopener">fordphotographs.com</a>
+    </p>
+  </section>
+
+  <section class="block container">
+    <h2 class="prose center">3D Interactive Layout</h2>
+    <p class="prose center">Use the arrows in the top right to full screen. Click or Shift-Click and move to navigate, use the scroll wheel to zoom.</p>
+    <div class="embed-wrap embed-16-9" style="max-width: 900px; margin: 0 auto;">
+      <iframe src="https://3dwarehouse.sketchup.com/embed.html?mid=u3f83ffe8-8a7c-4059-9a8b-fbf6a208e93d" title="3D interactive studio layout"></iframe>
+    </div>
+  </section>
+
+  <section class="block container">
+    <h2 class="prose center">Studio Build Photos</h2>
+    <p class="prose center">See how it all developed</p>
+    <div class="gallery-grid">
+      {buildPhotos.map((src) => (
+        <img src={src} alt="Studio build" loading="lazy" />
+      ))}
+    </div>
+  </section>
+</Layout>

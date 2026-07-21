@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SoundCloudEmbed from '../components/SoundCloudEmbed.astro';
+---
+
+<Layout title="Producer" description="Real drums, guitars, and vocal booth time for producers at The Hilson Studio, Nashville.">
+  <section class="page-hero container">
+    <h1>Producers</h1>
+  </section>
+
+  <section class="block container prose">
+    <p>You've got your own thing going on. We think that's great. You're working hard, you're out there being creative and working with artists and getting things done. But maybe you're missing that place where you can sneak in and knock out some slamming REAL drum tones. Maybe your vocal booth smells like day old socks and gets 108&deg; in the summer (that's 42&deg; C for our metric friends).</p>
+    <p>You're in luck. We're here for you, and we don't want to poach your clients; we just want to give you a place to shine and give you the best edge when it comes to building your productions.</p>
+  </section>
+
+  <section class="block container">
+    <div class="two-col">
+      <img src="/images/producer-01.jpg" alt="Our drum room" />
+      <div class="prose">
+        <h3>Big, huge, awesome sounding</h3>
+        <p><strong>REAL drums on your tracks, FAST</strong></p>
+        <p>Our house kit is almost always set up and dialed in, so if you want to put drums on a track today, you can usually come in and have it done by tomorrow. Can't make it out of the house? Send it over and we can put drums on it for you.</p>
+        <p>Send us a reference track and we can put real, great sounding drums on it for you. Take your record cuts and songwriter demos to the next level. Choose &agrave; la carte bass, electric or acoustic guitar, drums, percussion, all reasonably priced.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block container">
+    <div class="two-col">
+      <img src="/images/producer-02.jpg" alt="Some of our guitars" />
+      <div class="prose">
+        <h3>Rich, REAL guitar tones, tracked here</h3>
+        <p><strong>or reamped from your direct recording</strong></p>
+        <p>We've got a great selection of electric and acoustic guitars, basses and amps, all ready to bring the tones you hear in your head to life. Professionally set-up and maintained, they'll give you everything you need, from clean to heavy, single coil to humbucker, Black Keys to Keith Urban.</p>
+        <p>Prefer to work from the comfort of your own space? Record your guitars direct, get them just right, and send them over to us to have us re-record them through a great analog signal chain (amps - mic - pre - EQ - compression) and sent back to you with the color and personality that it needs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block container">
+    <div class="two-col">
+      <img src="/images/producer-03.jpg" alt="Control room and vocal booth" />
+      <div class="prose">
+        <h3>Clean, quiet isolated vocal booth</h3>
+        <p><strong>&amp; comfortable control room</strong></p>
+        <p>Getting a balanced, clean vocal sound can be one of the hardest parts of the recording process. Having a treated, temperature controlled vocal booth makes life a lot easier. Sonic judgement calls are easy to make when you're hearing the vocals in the mix and not through headphones.</p>
+        <p>We have a great selection of different microphone preamps and compressors for different vocal colors, plus zero latency monitoring thanks to a UAD Apollo. Bring in your own mic or use one of ours.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block container prose">
+    <h2>Testimonials</h2>
+    <blockquote class="testimonial">
+      <p>"Sean's one of the most creative and consistent audio pros I've ever worked with. He's not only a killer engineer/mixer, but he's proficient in a plethora of instruments and I refer a lot of overdub work to him. Whether it's rhythm guitars, drums/percussion, orchestral strings, vocal harmonies, pedal steel...Sean ALWAYS exceeds expectations and delivers beautiful, warm tones."</p>
+      <cite>— Marc Bauman, Owner/Engineer at HouseRecordingStudios.com</cite>
+    </blockquote>
+    <blockquote class="testimonial">
+      <p>"I can say without a doubt this is one of my favorite places to record in Nashville. The drum room is like a chameleon. There isn't a sound Sean hasn't been able to capture that I have needed for any of the number of projects I've recorded there. It's also a comfortable place to spend the day which we all know is so important when trying to capture that magic take."</p>
+      <cite>— Jay Tooke, Nashville based producer</cite>
+    </blockquote>
+  </section>
+
+  <section class="block container prose">
+    <h2>Hear it for yourself</h2>
+    <p>Check out some tracks built on our drums & guitars.</p>
+    <div class="embed-wrap embed-16-9" style="max-width: 700px; margin: 0 auto 2rem;">
+      <iframe src="https://www.youtube.com/embed/5MTdLAc3s78?wmode=opaque&enablejsapi=1" title="The Hilson Studio virtual tour" allowfullscreen></iframe>
+    </div>
+    <h3>Listen to isolated drum tracks</h3>
+    <p>No reverb or samples added. Audio sample plays: Drums (w/o rooms) -&gt; Drums (w/rooms) -&gt; Drums in track</p>
+    <SoundCloudEmbed url="https://api.soundcloud.com/playlists/192995909?secret_token=s-FQ3fa" title="Producer samples" />
+    <SoundCloudEmbed url="https://api.soundcloud.com/playlists/193736230" title="Isolated drum tracks" />
+  </section>
+</Layout>

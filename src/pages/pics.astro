@@ -1,0 +1,96 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tabs = [
+  { id: 'studio-build', label: 'Studio build' },
+  { id: 'space-pics', label: 'The space pics' },
+  { id: 'latth-pics', label: 'Latth pics' },
+  { id: 'production-vids', label: 'Production vids' },
+  { id: 'full-band-vids', label: 'Full band vids' },
+];
+
+const spaceBuildPhotos = ['space-16', 'space-17', 'space-18', 'space-19', 'space-20', 'space-21'].map((n) => `/images/${n}.jpg`);
+const latthPics = ['lath-splash-03.jpg', 'lath-splash-07.jpg', 'lath-splash-04.jpg'];
+const productionVidTitles = [
+  'Fake News - Chris Cron (feat. Daena Jay)', 'Shots - Imagine Dragons (Broiler Remix) Drum Cover HLAG 2018',
+  'WIndow From The Sky', 'Blind Breed - Search the Sky', 'Andrew Unrau - Cold Water (cover)',
+  "Why Not Be Kings (YNBK) - Lips Aren't Meant for Words (LIVE)", '(OneManBand) John Mayer - Assassin (cover)',
+  'Blind Breed - Whiskey from the Well (Official Video)', 'Why Not Be Kings (YNBK) - Magic (acoustic)',
+  '(OneManBand) Brand New - Jesus Christ (cover)', 'Michelle Pereira EPK',
+];
+const fullBandVidTitles = [
+  'Sydney Lane', 'Mac Leaphart - Honey, Shake! (Official Video)', 'Ginger Cowgirl - Columbus Stockade Blues',
+  'Meg Williams - Break My Rules (Live at The Hilson Studio)', 'Shaun Murphy - Turn Me On', 'slow dreamer - Vice Girl',
+  'Will Kay Soul - Way I Feel 4 U', 'The Brickmasons - California', 'Manta Rays - The Nut',
+  'Nothing But the Blood (New Creation) - Kurtis Parks', 'Talia Stewart - Crazy', 'Catalina - Smokey Mountains',
+  "Erik Parian--Won't Be Like This Forever", 'Jesse Isley - Monetta',
+];
+---
+
+<Layout title="Pics" description="Photo and video portfolio overview from The Hilson Studio.">
+  <section class="stub-note container" style="margin-top:2rem;">
+    Legacy portfolio aggregator page from the original site (not linked from the current nav). It mostly re-lists content already on the Space, Live-at-Hilson, and Video Production pages — kept here as a simplified tabbed reference for link continuity.
+  </section>
+
+  <section class="page-hero container">
+    <h1>Pics</h1>
+  </section>
+
+  <section class="block container">
+    <div class="tabs-nav" role="tablist">
+      {tabs.map((t, i) => (
+        <button role="tab" data-tab={t.id} class:list={{ 'is-active': i === 0 }} aria-selected={i === 0}>{t.label}</button>
+      ))}
+    </div>
+
+    <div class="tab-panel is-active" data-panel="studio-build">
+      <div class="gallery-grid">
+        {spaceBuildPhotos.map((src) => <img src={src} alt="Studio build" loading="lazy" />)}
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="space-pics">
+      <p class="prose center">See the full <a href="/space">Space page</a> for captioned room-by-room photos.</p>
+      <div class="gallery-grid">
+        {Array.from({ length: 13 }, (_, i) => `/images/space-${String(i + 1).padStart(2, '0')}.jpg`).map((src) => (
+          <img src={src} alt="Studio space" loading="lazy" />
+        ))}
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="latth-pics">
+      <div class="gallery-grid">
+        {latthPics.map((f) => <img src={`/images/${f}`} alt="Live at The Hilson Studio" loading="lazy" />)}
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="production-vids">
+      <p class="prose center">See the full <a href="/video-production">Video Production page</a> for the photo gallery.</p>
+      <ul class="prose">
+        {productionVidTitles.map((t) => <li>{t}</li>)}
+      </ul>
+    </div>
+
+    <div class="tab-panel" data-panel="full-band-vids">
+      <p class="prose center">See the full <a href="/liveatthehilson">Live At The Hilson Studio page</a> for the photo gallery.</p>
+      <ul class="prose">
+        {fullBandVidTitles.map((t) => <li>{t}</li>)}
+      </ul>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll('.tabs-nav button');
+  const panels = document.querySelectorAll('.tab-panel');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-tab');
+      buttons.forEach((b) => { b.classList.remove('is-active'); b.setAttribute('aria-selected', 'false'); });
+      panels.forEach((p) => p.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
+      document.querySelector(`.tab-panel[data-panel="${target}"]`)?.classList.add('is-active');
+    });
+  });
+</script>

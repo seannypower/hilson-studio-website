@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.astro';
+
+const galleryItems = Array.from({ length: 58 }, (_, i) => ({
+  src: `/images/lath-${String(i + 1).padStart(2, '0')}.jpg`,
+}));
+
+const performances = [
+  'Cam Spinks - Hot In The Sun', "Kayley Hill - You're Her Man", 'Nolan Neal - Hand In Hand',
+  'Stephen Humphries & Jesse Isley - Come Thou Fount', 'Plevyak - Background', 'Chris Diller - Amen to That',
+  'Hollier - Wrestle My Heart', 'Kamber - Heart-Shaped Box (Nirvana Cover)', 'One More Cast - Thomas Mac',
+  'LADY LAYNE - Easy Way Out of Love', 'Trish Torrales - Set Me Free', "Carolyn Miller - What You Can't Have",
+  'Charley Woods - Same', 'Glen Templeton - Run With Me', 'Talia - Crazy (Gnarls Barkley Cover)',
+  'Kurtis Parks - Nothing But the Blood (New Creation)', 'A.T. Branch - To Cry Wolf', "Michelle Pereira - If He's Worthy",
+  'The Way - Ryan Steele', 'Mandy Moon - Birdsong', "KIANA - Thinkin 'Bout You",
+  "Erik Parian - Won't Be Like This Forever", 'Haley Chic - Same Sunshine', 'Talia Stewart - Great Expectations',
+  'Apryl Evans - Suck it Up (Buttercup)', 'Mason Lee - Already Gone', 'Chasing Butterflies - Blake and Mandi Mundell',
+  'Rebecca Rae - War Paint', 'Jesse Isley - Center of the Sun', 'Lucas Hoge - The Mystic',
+  'Sasha Aaron - Ghost In This Town', 'Courier - Hello (Adele cover)', "Tiffany Thompson - Travellin' Girl",
+  'Casey Derhak - Back Beat', 'In Your Prime - Don Pedigo', "Aaron Cox - In Her Eyes",
+  'Stephanie Quayle - Drinking With Dolly', 'Tiffany Thompson - Porch Tales', 'Sisters Mann - Sink This Ship',
+  'CITY SILOS - Take Me Out', 'Sydney Lane', 'Mac Leaphart - Honey, Shake! (Official Video)',
+  'Ginger Cowgirl - Columbus Stockade Blues', 'Meg Williams - Break My Rules (Live at The Hilson Studio)',
+  'Shaun Murphy - Turn Me On', 'slow dreamer - Vice Girl', 'Will Kay Soul - Way I Feel 4 U',
+  'The Brickmasons - California', 'Manta Rays - The Nut', 'Nothing But the Blood (New Creation) - Kurtis Parks',
+  'Talia Stewart - Crazy', 'Catalina - Smokey Mountains', "Erik Parian--Won't Be Like This Forever",
+  'Jesse Isley - Monetta',
+];
+
+const bookingUrl = 'https://docs.google.com/forms/d/11hq0gQWwIExjSMxQ56rB-4v1h1T1ikj1YhgEynMvdu0/viewform';
+---
+
+<Layout title="Live At The Hilson Studio" description="Live performance video shoots with studio quality audio and HD video at The Hilson Studio, Nashville.">
+  <section class="page-hero container">
+    <h1>Show the world what you can really do.</h1>
+    <p class="lede">Your live performance with studio quality audio and HD video.</p>
+  </section>
+
+  <section class="block container">
+    <div class="price-cards" style="max-width: 700px; margin: 0 auto;">
+      <div class="price-card">
+        <h4>Acoustic</h4>
+        <p>1 song - $450<br />2 or more songs - $350 each</p>
+      </div>
+      <div class="price-card">
+        <h4>Full Band</h4>
+        <p>1 song - $750<br />2 or more songs - $500 each</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block container">
+    <div class="embed-wrap embed-16-9" style="max-width: 800px; margin: 0 auto;">
+      <iframe src="https://www.youtube.com/embed/rRqY0ndUqMg" title="The Voice contestant Nolan Neal performing Tiny Dancer" allowfullscreen></iframe>
+    </div>
+    <p class="gallery-caption" style="text-align:center;">The Voice contestant Nolan Neal performing "Tiny Dancer"</p>
+    <p style="text-align:center; margin-top:1.5rem;">
+      <a class="splash-cta" style="color:var(--color-text); border-color:var(--color-text); display:inline-block;" href={bookingUrl} target="_blank" rel="noopener">Click here to book a shoot</a>
+    </p>
+  </section>
+
+  <section class="block container prose center">
+    <h2>What's the story?</h2>
+    <p>A lot of people are posting videos of them performing on the internet. It's pretty cool.</p>
+    <p>But it's time to get real.</p>
+    <p>Many of them are pre-recorded, edited, and made pitch perfect, then labeled "live" when they're not. And that's way less cool.</p>
+    <p>Live at The Hilson Studio is how we fight back. Give people something real. No auto-tune. No quantizing. Just your voice and your instrument. And for a reasonable price.</p>
+  </section>
+
+  <section class="block container prose center">
+    <h2>How does it work?</h2>
+    <h3>Scheduling</h3>
+    <p>We book a whole day for a Live at The Hilson Studio video shoot with different artists. This means we waste less time, and can charge less than other similar services. Time slots are assigned on availability.</p>
+  </section>
+
+  <section class="block container">
+    <div class="gallery-grid" style="max-width: 900px; margin: 0 auto;">
+      <img src="/images/lath-splash-03.jpg" alt="Behind the scenes with Tiffany Thompson" loading="lazy" />
+      <img src="/images/lath-splash-07.jpg" alt="Casey Derhak during a live shoot" loading="lazy" />
+    </div>
+  </section>
+
+  <section class="block container prose center">
+    <h3>Keeping it real</h3>
+    <p>You do 2 takes and choose the best one. The final product is made up of 1 continuous take. This guarantees your viewers see something real and authentic, with all the grit and nuance that has always made music enjoyable.</p>
+    <h3>Make an impression</h3>
+    <p>This isn't about smashing concepts of what art and entertainment are, this is you singing your song and being yourself.</p>
+    <p>And we think that's the most special thing you can do.</p>
+  </section>
+
+  <section class="block container prose">
+    <h2>Check out past artist performances</h2>
+    <div class="gear-columns">
+      <div class="gear-group">
+        <ul>
+          {performances.map((p) => <li>{p}</li>)}
+        </ul>
+      </div>
+    </div>
+    <p class="form-note">...stay tuned for updates!</p>
+  </section>
+
+  <section class="block container">
+    <Gallery items={galleryItems} />
+  </section>
+</Layout>

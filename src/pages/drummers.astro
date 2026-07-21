@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SoundCloudEmbed from '../components/SoundCloudEmbed.astro';
+---
+
+<Layout title="Drummers" description="Recording drums at The Hilson Studio, Nashville — a house kit ready to track, big analog sound, and fast turnaround.">
+  <section class="block container prose center">
+    <h1>You have it the worst.</h1>
+    <p>You have to lug a ton of gear to gigs.<br />And you're probably tired of playing quarter notes for an hour while the engineer dials in levels.<br />But what if recording drums was easy?</p>
+  </section>
+
+  <section class="block container">
+    <img src="/images/drummers-01.jpg" alt="Studio drum kit" style="max-width:800px; margin: 0 auto;" />
+    <p class="gallery-caption" style="text-align:center;">Well, obviously the mics weren't set up for this picture...</p>
+  </section>
+
+  <section class="block container">
+    <div class="two-col">
+      <div class="prose">
+        <h3>We're always ready for you.</h3>
+        <p>We keep our house kit set up and mic'd so you can just walk in and start tracking. No wasting time setting up and dialing in levels. This helps keeps costs down.</p>
+      </div>
+      <img src="/images/drummers-02.jpg" alt="Drum kit mic'd and ready" />
+    </div>
+  </section>
+
+  <section class="block container">
+    <div class="two-col">
+      <img src="/images/drummers-03.jpg" alt="Drum tones" />
+      <div class="prose">
+        <h3>Tons of tones</h3>
+        <p>We have some great kit and snare options. Swapping a snare drum and cymbals can make all the difference between a hard rock sound and an indie sound. (Well, that and how you hit them)</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block container">
+    <div class="two-col">
+      <div class="prose">
+        <h3>Big or small sounds</h3>
+        <p>By using big gobos, we're able to reshape the room in different ways. They absorb on one side and reflect on the other side. What does that all mean?</p>
+        <p>It means you can have big Bonham sounds, tight L.A. sounds, and everything in between.</p>
+      </div>
+      <img src="/images/drummers-04.gif" alt="Drum room gobos" />
+    </div>
+  </section>
+
+  <section class="block container prose center">
+    <h3>Why track here?</h3>
+    <p>We have a great collection of mics & analog gear, which means your drums get recorded with color, character, EQ, and compression. This means you have to work less in mixing.</p>
+    <h3>On a budget? Let's make a deal.</h3>
+    <p>We feel like drums shouldn't be phoned in because they're too expensive. Samples and drum plugins are great tools for getting ideas out, but there's no substitute for the real thing.</p>
+    <p>We also want to help drummers get work. We're fast and good at what we do, and we want to help make you look better.</p>
+    <p>Contact us if you need to get things done and we'll work with you to make it happen.</p>
+  </section>
+
+  <section class="block container prose">
+    <h2>Hear our drums for yourself</h2>
+    <p>Samples from drums recorded here</p>
+    <SoundCloudEmbed url="https://api.soundcloud.com/playlists/192992378" title="Drum samples" />
+    <h3>Isolated drums</h3>
+    <p>Audio file is: drums (no rooms), drums (w/rooms), drums in mix (no reverb or samples added)</p>
+    <SoundCloudEmbed url="https://api.soundcloud.com/playlists/193736230" title="Isolated drums" />
+  </section>
+</Layout>

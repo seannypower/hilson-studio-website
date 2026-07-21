@@ -1,0 +1,62 @@
+---
+import Nav from '../components/Nav.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  bare?: boolean;
+}
+
+const { title, description = "Nashville's one stop shop for music makers.", bare = false } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/jpeg" href="/images/site-logo.jpg" />
+    <title>{title} — The Hilson Studio</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    {!bare && (
+      <>
+        <div class="announce" id="announce">
+          <span>
+            Now booking "<em>Live At The Hilson Studio</em>" video shoots!
+            <a href="/liveatthehilson">Click here for more info.</a>
+          </span>
+          <button class="announce-close" id="announce-close" aria-label="Close announcement">&times;</button>
+        </div>
+
+        <header class="site-header">
+          <p class="header-tagline">Making music since forever</p>
+          <div class="container header-row">
+            <a href="/about" class="logo">The Hilson Studio</a>
+            <Nav />
+          </div>
+        </header>
+      </>
+    )}
+
+    <main>
+      <slot />
+    </main>
+
+    {!bare && (
+      <footer class="site-footer">
+        <p>Copyright &copy; 2016 The Hilson Studio</p>
+      </footer>
+    )}
+
+    {!bare && (
+      <script>
+        const bar = document.getElementById('announce');
+        const closeBtn = document.getElementById('announce-close');
+        closeBtn?.addEventListener('click', () => bar?.classList.add('is-closed'));
+      </script>
+    )}
+  </body>
+</html>

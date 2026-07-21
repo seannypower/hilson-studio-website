@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SoundCloudEmbed from '../components/SoundCloudEmbed.astro';
+---
+
+<Layout title="Sounds" description="Audio samples from The Hilson Studio: full production, songwriter demos, before & afters, and drum room recordings.">
+  <section class="page-hero container">
+    <h1>Audio Samples</h1>
+  </section>
+
+  <section class="block container prose">
+    <h2>Full Production</h2>
+    <p>All tracks produced, recorded, and mixed here</p>
+    <SoundCloudEmbed url="https://api.soundcloud.com/playlists/192992378" title="Full Production" />
+  </section>
+
+  <section class="block container prose">
+    <h2>Songwriter Demos</h2>
+    <p>Taken from start to finish, from song idea to final mix</p>
+    <SoundCloudEmbed url="https://api.soundcloud.com/playlists/193022396?secret_token=s-j4j2G" title="Songwriter Demos" />
+  </section>
+
+  <section class="block container prose">
+    <h2>Before & After</h2>
+    <p>Where songs were, and where we took them</p>
+    <SoundCloudEmbed url="https://api.soundcloud.com/playlists/193738132" title="Before & After" />
+  </section>
+
+  <section class="block container prose">
+    <h2>Drum Room</h2>
+    <p>No reverb or samples added<br />Audio file is: drums (no rooms), drums (w/rooms), drums in mix</p>
+    <SoundCloudEmbed url="https://api.soundcloud.com/playlists/193736230" title="Drum Room" />
+  </section>
+</Layout>

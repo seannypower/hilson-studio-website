@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.astro';
+
+const galleryItems = [
+  { src: '/images/about-01.jpg' },
+  { src: '/images/about-02.jpg' },
+  { src: '/images/about-03.jpg', alt: "First time for me out here! Nice to get some warmer weather 😁 holler if you're out and about!" },
+  { src: '/images/about-04.jpg' },
+  { src: '/images/about-05.jpg' },
+  { src: '/images/about-06.jpg' },
+  { src: '/images/about-07.jpg' },
+  { src: '/images/about-08.jpg' },
+  { src: '/images/about-09.jpg', alt: 'Finally found time to put this new colour box together. Samples to follow! Sounds greattttt 🤘' },
+  { src: '/images/about-10.jpg' },
+  { src: '/images/about-11.jpg' },
+  { src: '/images/about-12.jpg', alt: "It's always 1998 here at the studio! Had the talented @kenmeyermusic working with @t__skye__t this week. Lotta things going on!" },
+];
+---
+
+<Layout title="About" description="The Hilson Studio is an affordable recording studio in Nashville where anyone can feel comfortable and get creative.">
+  <section class="block prose center container">
+    <h1>The Hilson Studio</h1>
+    <p>is an affordable recording studio where anyone can feel comfortable and get creative.</p>
+    <p>It's the perfect blend of home studio and professional space, with a touch of Nashville and New York influence. Located just 20 minutes from downtown Nashville, TN, it's everything you love about Nashville without the pretense (and cost) of being on Music Row.</p>
+    <p>A generous collection of instruments and recording equipment mean you have all the tools you need at your disposal. Add to that the experience of owner/engineer Sean Power, and the sky is the limit.</p>
+    <p>Explore the site and feel free to contact with any questions about services, pricing, and booking time.</p>
+  </section>
+
+  <section class="block container">
+    <Gallery items={galleryItems} />
+  </section>
+
+  <section class="block container prose center">
+    <h3>Proud partners with:</h3>
+    <div style="display:flex; gap:3rem; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:1.5rem;">
+      <img src="/images/partner-warmaudio.png" alt="Warm Audio" style="max-height:60px; width:auto;" />
+      <img src="/images/partner-mcck.png" alt="Music City Content Kings" style="max-height:60px; width:auto;" />
+    </div>
+  </section>
+</Layout>

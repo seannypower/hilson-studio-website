@@ -1,0 +1,170 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tabs = [
+  { id: 'standard', label: 'Standard Rates' },
+  { id: 'demos', label: 'Demos' },
+  { id: 'production', label: 'Production' },
+  { id: 'overdubs', label: 'Overdubs' },
+  { id: 'vocal-tuning', label: 'Vocal Tuning' },
+  { id: 'videos', label: 'Videos' },
+];
+---
+
+<Layout title="Cost" description="Studio rates at The Hilson Studio: standard rates, demos, production, overdubs, vocal tuning, and video packages.">
+  <section class="page-hero container">
+    <h1>Pricing</h1>
+  </section>
+
+  <section class="block container">
+    <div class="tabs-nav" role="tablist">
+      {tabs.map((t, i) => (
+        <button role="tab" data-tab={t.id} class:list={{ 'is-active': i === 0 }} aria-selected={i === 0}>{t.label}</button>
+      ))}
+    </div>
+
+    <div class="tab-panel is-active" data-panel="standard">
+      <h2 class="prose center">Studio Time</h2>
+      <div class="price-cards">
+        <div class="price-card">
+          <h4>Studio Time <span class="price">$45 hr / $400 day</span></h4>
+          <p>Access to all the gear, instruments, and recording rig.</p>
+        </div>
+        <div class="price-card">
+          <h4>Studio + Engineer <span class="price">$65 hr / $600 day</span></h4>
+          <p>All the gear and instruments, plus an engineer to help dial in tones and run Pro Tools.</p>
+        </div>
+        <div class="price-card">
+          <h4>Studio + Engineer + Musician(s) <span class="price">Price varies</span></h4>
+          <p>The all inclusive package. Contact for more info.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="demos">
+      <h2 class="prose center">Acoustic Demo</h2>
+      <div class="price-cards">
+        <div class="price-card">
+          <h4>Guitar (you) + Vocal (you) <span class="price">$150 per song</span></h4>
+          <p>You perform your song and we record it, clean and professionally. Up to 2 rhythm acoustics, plus a lead acoustic part if you have. Minor vocal editing included. You get a stereo mp3, mixed to your taste. (max 2 hours).</p>
+        </div>
+        <div class="price-card">
+          <h4>Guitar (us) + Vocal (you) <span class="price">$250 per song</span></h4>
+          <p>Your song, recorded to a metronome (for future development), layered with 1-2 rhythm acoustics, plus a melodic hook where available. You sing, minor vocal editing included. You get a stereo mp3, mixed to your taste. (max 2 hours).</p>
+        </div>
+        <div class="price-card">
+          <h4>Guitar (us) + Vocal (us) <span class="price">$350 per song</span></h4>
+          <p>Your song, recorded to a metronome (for future development), layered with 1-2 rhythm acoustics, plus a melodic hook where available. You choose from several studio singers (contact for options). You get a stereo mp3, mixed to your taste.</p>
+        </div>
+      </div>
+      <h2 class="prose center">Full Demos</h2>
+      <div class="price-cards">
+        <div class="price-card">
+          <h4>Full Production Demo (you sing) <span class="price">$500 per song</span></h4>
+          <p>You give us a basic recording of your song, we build instrumentation from the structure and chords. Instrumentation can include drums, bass, guitar, basic keys (B3/piano). You sing the song in our studio, we do vocal editing as necessary, then mix it all together. You get 1 revision to address changes you might want. You get a stereo mp3 mixed to your taste.</p>
+        </div>
+        <div class="price-card">
+          <h4>Full Production Demo (we sing) <span class="price">$600</span></h4>
+          <p>Same details, but you choose from several studio singers to perform your song (contact for options).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="production">
+      <h2 class="prose center">Production</h2>
+      <div class="price-cards">
+        <div class="price-card">
+          <h4>Singles <span class="price">$1200+ (varies depending on project)</span></h4>
+          <p>Want to put an individual song out into the world? Come in and we'll produce a single from the ground up. We can even help you find the right song.</p>
+        </div>
+        <div class="price-card">
+          <h4>EP (3-5 songs) <span class="price">Contact for quote</span></h4>
+          <p>An EP is a great way to showcase some of your current material without committing to a full length record. We'll help you choose which songs to do from what you've got, or help find some new material to consider.</p>
+        </div>
+        <div class="price-card">
+          <h4>Full Length Record (8-12 songs) <span class="price">Contact for quote</span></h4>
+          <p>This is the mother load. You've got material, and we're gonna help you create a whole project that flows together. From song selection, to varying sounds and tones, all held together with the cohesion.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="overdubs">
+      <h2 class="prose center">Overdubs</h2>
+      <div class="price-cards">
+        <div class="price-card">
+          <h4>Drums <span class="price">$150 per song</span></h4>
+          <p>Studio quality real drums, performed to your song. You get 2-4 takes with fill options (unmixed stems). Shaker and tambourine available at no extra charge.</p>
+        </div>
+        <div class="price-card">
+          <h4>Bass <span class="price">$75 per song</span></h4>
+          <p>You get 3 takes performed to your song, varying in complexity. Choice of 4 or 5 string (same rate) and tone.</p>
+        </div>
+        <div class="price-card">
+          <h4>Electric Guitar <span class="price">$125 per song</span></h4>
+          <p>You get 3-5 tracks of guitar, recorded through a real amp with analog FX pedals (optional). Rhythm guitars of varying tones, plus accents, and lead if desired. Acoustics can be bundled for a discount.</p>
+        </div>
+        <div class="price-card">
+          <h4>Acoustic Guitar <span class="price">$100 per song</span></h4>
+          <p>You get 2-4 tracks of acoustics guitars, strummed chords or fingerpicking + accents + melodic lines. Hi strung (Nashville tuning), Mandolin and Banjitar available. Electrics can be bundled for a discount.</p>
+        </div>
+        <div class="price-card">
+          <h4>Vocal Harmonies <span class="price">$50-150</span></h4>
+          <p>Harmonies are available in varying arrangements - from a simple single line on select words, to multiple doubled layers and gang vocals tracked in a large acoustic space. Contact for a quote.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="vocal-tuning">
+      <h2 class="prose center">Vocal Tuning</h2>
+      <div class="price-cards">
+        <div class="price-card">
+          <h4>Lead vocal <span class="price">$75 per song</span></h4>
+          <p>You send a consolidated lead vocal and instrumental track, you get a hand tuned, natural sounding vocal back. Harmonies can be created from lead vocals as well.</p>
+        </div>
+        <div class="price-card">
+          <h4>Multiple vocals <span class="price">Price varies</span></h4>
+          <p>Have a lead vocals AND a bunch of harmonies / doubles / nonsense? Contact for a quote.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" data-panel="videos">
+      <h2 class="prose center">Videos</h2>
+      <div class="price-cards">
+        <div class="price-card">
+          <h4>Live at The Hilson Studio <span class="price">$450 for 1, $300 each for 2+</span></h4>
+          <p>You come in and perform your song, 2 full takes, we edit the best take and give you a 4k video.</p>
+        </div>
+        <div class="price-card">
+          <h4>Music Videos <span class="price">Price varies</span></h4>
+          <p>Each video is custom, from location to shoot style to delivery quality. Contact us to talk about concepts and options. Bring us your ideas, or let us take the wheel! Visit <a href="https://www.musiccitycontentkings.com" target="_blank" rel="noopener">www.MusicCityContentKings.com</a> for more info.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block container prose center">
+    <h2>Additional services</h2>
+    <p>We can do all kinds of things in addition to the services offered above, including:</p>
+    <p>Mixing &amp; Mastering</p>
+    <p>Re-amping electric and bass guitars</p>
+    <p>Pitch shifting &amp; time changing tracks and stems</p>
+    <p>Audio for video (foley &amp; editing)</p>
+    <p>Contact for more details.</p>
+  </section>
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll('.tabs-nav button');
+  const panels = document.querySelectorAll('.tab-panel');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-tab');
+      buttons.forEach((b) => { b.classList.remove('is-active'); b.setAttribute('aria-selected', 'false'); });
+      panels.forEach((p) => p.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
+      document.querySelector(`.tab-panel[data-panel="${target}"]`)?.classList.add('is-active');
+    });
+  });
+</script>

@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact" description="Get in touch with The Hilson Studio, Nashville — ask about studio time, production, or video.">
+  <section class="page-hero container">
+    <h1>Ask us anything.</h1>
+    <p class="lede">Curious about studio time? A particular service? Our favorite brand of domestic beer? Go for it.</p>
+  </section>
+
+  <section class="block container">
+    <div class="two-col">
+      <form class="site-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hp-field">
+          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Who are you?" />
+        </div>
+
+        <div>
+          <label for="email">Email Address <span class="req">(required)</span></label>
+          <input type="email" id="email" name="email" required />
+        </div>
+
+        <div>
+          <label for="message">Message <span class="req">(required)</span></label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+
+        <div>
+          <label for="reason">What are you contacting us about? <span class="req">(required)</span></label>
+          <select id="reason" name="reason" required>
+            <option value="">Select an option</option>
+            <option value="Studio Time">Studio Time</option>
+            <option value="Production/Demos">Production/Demos</option>
+            <option value="Video">Video</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <div class="prose">
+        <h2>The Hilson Studio</h2>
+        <p>716 Oak Creek Drive<br />Nashville, TN 37013<br /><em>516.317.6456</em></p>
+      </div>
+    </div>
+  </section>
+</Layout>

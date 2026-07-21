@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Gallery from '../components/Gallery.astro';
+
+const galleryItems = [
+  { src: '/images/videoprod-01.jpg' },
+  { src: '/images/videoprod-02.jpg' },
+  { src: '/images/videoprod-03.jpg' },
+  { src: '/images/videoprod-04.png' },
+  { src: '/images/videoprod-05.jpg' },
+  { src: '/images/videoprod-06.jpg' },
+  { src: '/images/videoprod-07.jpg' },
+  { src: '/images/videoprod-08.jpg' },
+  { src: '/images/videoprod-09.jpg' },
+  { src: '/images/videoprod-10.jpg' },
+  { src: '/images/videoprod-11.jpg' },
+];
+---
+
+<Layout title="Video Production" description="Music video production at The Hilson Studio, Nashville.">
+  <section class="page-hero container">
+    <h1>Video... it's like music you can see.</h1>
+    <p class="lede">We're not so different after all, you and me.</p>
+  </section>
+
+  <section class="block container prose">
+    <p>Music and video have gone hand in hand since before MTV made it popular (and then ruined it). There's tons of different stories and visuals that can accompany a song to elevate both to a new level of art, or help tell your story as an artist.</p>
+    <p>You may just want to give viewers something to look at while they listen to the record version of your song. Maybe you want to show them your face and your sweet hip-rockin' moves. Maybe you want to green screen the whole thing and pretend you're on mars.</p>
+    <p>We don't know what you want, but we'd love for you to tell us. It's just another form of creativity, and we're excited to help make this a reality as well! Check out some of our work here, and reach out to chat about ideas, budget, multi-song projects, you name it.</p>
+  </section>
+
+  <section class="block container">
+    <Gallery items={galleryItems} />
+  </section>
+</Layout>

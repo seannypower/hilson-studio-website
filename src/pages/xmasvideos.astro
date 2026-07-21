@@ -1,0 +1,36 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const videos = [
+  { src: '/images/holiday-01.jpg', title: 'Christmas Star LIVE @ Hilson Studio' },
+  { src: '/images/holiday-02.jpg', title: 'Mary, Did You Know? - Kayley Hill (Acoustic LIVE)' },
+  { src: '/images/holiday-03.jpg', title: 'Ginger Cowgirl - Blue Christmas' },
+  { src: '/images/holiday-04.jpg', title: "I'll Be Home For Christmas (Live) by Michelle Pereira" },
+  { src: '/images/holiday-05.jpg', title: 'MISY - Santa Baby (Live Cover)' },
+  { src: '/images/holiday-06.jpg', title: 'Have Yourself A Merry Little Christmas - Carolyn Miller' },
+  { src: '/images/holiday-07.jpg', title: 'Bitter Christmas Song' },
+  { src: '/images/holiday-08.jpg', title: 'Nothing But the Blood (New Creation) - Kurtis Parks LIVE' },
+  { src: '/images/holiday-09.jpg', title: 'Apryl Evans Cover of "Mary Did You Know" - Live at The Hilson Studio (Christmas Edition)' },
+];
+---
+
+<Layout title="Xmas Videos" description="Christmas live video sessions recorded at The Hilson Studio.">
+  <section class="stub-note container" style="margin-top:2rem;">
+    Legacy seasonal gallery from the original site (not linked from the current nav).
+  </section>
+
+  <section class="page-hero container">
+    <h1>Xmas Videos</h1>
+  </section>
+
+  <section class="block container">
+    <div class="gallery-grid">
+      {videos.map((v) => (
+        <figure>
+          <img src={v.src} alt={v.title} loading="lazy" />
+          <figcaption class="gallery-caption">{v.title}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </section>
+</Layout>

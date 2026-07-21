@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const groups = [
+  {
+    title: 'Analog Compressors & EQ',
+    items: [
+      'SSL Ultraviolet EQ (x2)', 'A Designs HM2 "The Nail"', 'Audio Scape V-Comp +', 'Audio Scape D-Comp',
+      'Warm Audio Bus Comp', 'Lindell Audio 7x-500', 'Warm Audio WA-2A (x2)', 'Warm Audio EQP-WA (x2)',
+      'Warm Audio WA-76 (x2)', 'Warm Audio WA-1B', 'Summit Audio TLA-50 (x2)', 'FMR RNC',
+      'Golden Ages Comp-54', 'Chameleon Labs 7720', 'Empirical Labs Distressor', 'PR&E Multi-Lim AM',
+      'Orban 424a Compressor', 'Orban 674a Parametric EQ', 'Pandora LM-401 Limiter', 'Rupert Neve Designs RND 542 (x2)',
+      'DIYRE CP5', 'DIYRE OLA5', 'DIYRE Colour Palette (dirt & grit)',
+    ],
+  },
+  {
+    title: 'Analog Preamps',
+    items: [
+      'Rupert Neve Designs RND 511 (x2)', 'Great River ME-1NV', 'Louder than Liftoff Silver Bullet', 'CAPI VP28 (x3)',
+      'Warm Audio WA-412 (x2)', 'Warm Audio TB-12 (x2)', 'Warm Audio WA-MPX (1x stereo + 1x mono)', 'AEA RPQ (2 ch)',
+      'Avalon 737sp', 'Demeter VTMP-2a (2 ch)', 'Langevin Dual Vocal Combo (x2)', 'UAD 4-710d (4 ch)',
+      'UAD Apollo (4 ch)', 'Black Lion Audio Auteur (2 ch)', 'Chameleon Labs 7602 (x4)', 'Chandler Ltd. Germanium (x2)',
+      'Joe Meek VC6Q', 'Altec Lansing 1689A', 'Allen & Heath Mix Wizard (16 ch)',
+    ],
+  },
+  {
+    title: 'Microphones',
+    items: [
+      'Manley Reference Cardioid', 'Neumann KM184 (x2)', 'Neumann TLM 102', 'Warm Audio WA-14 (x4)',
+      'Warm Audio WA-67 (x2)', 'Warm Audio WA-47 (x2)', 'Warm Audio WA-87', 'Warm Audio WA-251',
+      'Warm Audio WA-47jr FET', 'Warm Audio WA-84 (x2)', 'Warm Audio WA-8000', 'Warm Audio CX-12',
+      'Rode NT4 (stereo XY)', 'Sennheiser e604 (x3)', 'AKG D112', 'Blue Reaktor (x2)',
+      'Shure SM57 (x5)', 'Shure SM7b (x2)', 'Shure SM58 (x3)', 'Shure Beta58a (x2)',
+      'Beyer Dynamic M201', 'Beyer Dynamic M160 (w/Sank ribbon + trans)', 'Beyer Dynamic M101N (C) (x2)',
+      'ADK Hamburg LE (x2)', 'Cascade Fathead (w/Sank ribbon + trans)',
+    ],
+  },
+  {
+    title: 'Electric Guitars',
+    items: [
+      'Rickenbacker 330', 'PRS Starla w/Bigsby', 'Taylor SB1', 'Fender American Standard Tele',
+      'Fender American Standard Strat', 'Gibson Les Paul Studio', 'Epiphone Flamekat', 'Harmony Vintage Electric',
+      "Danelectro '56 Baritone",
+    ],
+  },
+  {
+    title: 'Acoustic Guitars',
+    items: [
+      'Larivee D-03r DLX', 'Gretsch New Yorker mandolin', 'Alvarez AD60CK', 'Yamaha Classical',
+      'Seagull (Nashville tuning/hi strung)', 'Ibanez Artwood',
+    ],
+  },
+  {
+    title: 'Bass Guitars',
+    items: [
+      'Rickenbacker 4003 4 string', 'Ernie Ball Music Man Stingray 4 string (BEAD)', 'Lakland Skyline 55-64 vintage P 5 string',
+      'Fender USA Dimension 5 string', 'Fender MIM Jazz 4 string (fretless)', 'Fender MIM Jazz 5 string',
+      'Warwick Corvette 5 string', 'Davidson P-bass 4 string (flatwounds)',
+    ],
+  },
+  {
+    title: 'Drums',
+    items: [
+      'Pearl Reference (12", 14", 16", 22")', 'Yamaha Maple Custom - (10", 12", 14", 16", 22")',
+      'Slingerland kick drum (20"x14")', '"The Fuzzy Kick" (24"x26")',
+    ],
+  },
+  {
+    title: 'Snares',
+    items: [
+      'Ludwig Black Beauty Brass (14"x6.5")', 'Ludwig Piccolo Maple (13"x3")', 'Vintage Slingerland Steel (14"x4.5")',
+      'Gretsch Full Range Brushed Brass (14"x6.5")', 'Pearl Masters Dennis Chambers Maple (14"x6.5")',
+      'Canopis Steel (14"x6.5)', 'Pearl Free Floating Steel (14"x3.5")', 'Taye Metalworks Steel (14"x6.5")',
+      'Mapex Black Panther Maple (14"x5.5")', 'Tama Starclassic w/wood hoops Birch (14"x5")',
+      'Custom "Frankenstein" Maple (15"x7")', 'Ludwig & Leedy Mahogany (14"x6.5")',
+    ],
+  },
+  {
+    title: 'Amps & Cabs',
+    items: [
+      '1965 Fender Blackface Bandmaster head + cab', '1960s Fender Silverface Champ', 'Fender Hot Rod Deville (USA)',
+      'Bad Cat Hot Cat 30', 'Silvertone Solid State 100', 'Vox AC15 head + cab (UK)', 'Mesa Stiletto Deuce',
+      'Ashdown Lil Bastard', 'Marshall 1960s Lead B 4x12" (ROLA G12 + V30s)', 'David Eden 2x10"',
+      'Vintage Sonic 2x12" (G12H30s / G12M70s)',
+    ],
+  },
+  {
+    title: 'Monitoring & Interface',
+    items: [
+      'Dangerous D-Box', 'Dangerous 2-Bus +', 'Analogue ToneBuss', 'Mytek Stereo 96 ADC', 'UAD Apollo Duo',
+      'UAD 4-710d', 'Behringer Powerplay P16-I', 'Behringer P16m (x6)', 'Mackie HR824 (x2)', 'Focal Twin6be (x2)',
+    ],
+  },
+  {
+    title: 'Computers + Software',
+    items: [
+      'Intel i7 2600K (3.4 GHz x8)', '16gb RAM', '1 TB SysHD', '1 TB SamplesHD', '2 TB AudioHD (x2)',
+      'Pro tools 10', 'Various UA & Slate Plugins', "Various synths & add'l plugs",
+    ],
+  },
+];
+---
+
+<Layout title="Gear" description="The full gear list at The Hilson Studio: preamps, compressors, microphones, guitars, drums, amps, and more.">
+  <section class="page-hero container">
+    <h1>Gear</h1>
+    <p class="lede">This is a big part of the sound of The Hilson Studio. These pieces have been specifically picked and tailored to provide a wide array of sounds and tones.</p>
+  </section>
+
+  <section class="block container">
+    <img src="/images/gear-01.jpg" alt="Gear at The Hilson Studio" style="max-width: 700px; margin: 0 auto 2.5rem;" />
+    <div class="gear-columns">
+      {groups.map((g) => (
+        <div class="gear-group">
+          <h3>{g.title}</h3>
+          <ul>
+            {g.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+</Layout>
