@@ -6,14 +6,20 @@ A static rebuild of [thehilsonstudio.com](https://www.thehilsonstudio.com), repl
 
 ```
 src/
-  layouts/Layout.astro      shared header, announcement bar, footer, <head>
-  components/Nav.astro      main dropdown nav (desktop hover / mobile tap)
-  components/Gallery.astro  simple image grid with optional captions
+  layouts/Layout.astro          shared header, announcement bar, footer, <head>
+  components/Nav.astro          main dropdown nav (desktop hover / mobile tap)
+  components/Gallery.astro      simple image grid with optional captions
+  components/Carousel.astro     hero-style slideshow: stage + prev/next + thumbnail strip
+  components/Lightbox.astro     shared full-screen modal (image or video) — one per page group
+  components/LightboxItem.astro a single clickable thumbnail that opens the Lightbox
   components/SoundCloudEmbed.astro   wraps the SoundCloud iframe embed
-  pages/*.astro             one file per page, filename = URL path
-  styles/global.css         all site styles (colors, type, layout, forms)
-public/images/              every image, downloaded and re-hosted locally
+  data/live-at-hilson-videos.json    title/video-id/thumbnail data for the 54 performance videos
+  pages/*.astro                 one file per page, filename = URL path
+  styles/global.css             all site styles (colors, type, layout, forms)
+public/images/                  every image, downloaded and re-hosted locally
 ```
+
+`Carousel` and `LightboxItem` both render into a shared `Lightbox` (same `group` prop) — clicking a carousel's active slide or any standalone gallery thumbnail opens the same full-screen modal, with prev/next cycling through everything in that group.
 
 Astro's file-based routing means the filename **is** the URL: `src/pages/the-gear.astro` → `/the-gear`, `src/pages/artistsbands-1.astro` → `/artistsbands-1`, etc. These slugs were kept identical to the original Squarespace URLs.
 
@@ -66,8 +72,13 @@ After any edit, run `npm run dev` and check the page in a browser before pushing
 
 ## Known simplifications / things to review
 
-- **Fonts**: the original site uses Futura PT (a paid Adobe/Typekit font). This rebuild substitutes the free Google Font **Jost**, which is visually close but not identical. If you have a Typekit/Adobe Fonts license, swap the `@import` in `src/styles/global.css` for the real Futura PT embed.
-- **`/pics`**: the original was a large tabbed portfolio aggregator that mostly re-listed photos/videos already on the Space, Live-at-Hilson, and Video Production pages. It's rebuilt here as a simplified tabbed reference rather than a full duplicate — see the note on the page itself.
-- **Live-at-Hilson performance list**: the original site grouped ~54 past performances under "Full Band" and "Acoustic" headers, but didn't expose which song belonged to which category in a way that could be scraped reliably. This rebuild lists them all together under one heading.
-- **Image weight**: images were re-hosted as-is from the original CDN (~90MB total across the site). Consider running them through an optimizer/compressor for faster load times — this wasn't done here to keep the rebuild scope manageable.
-- **`/holidays` and `/video-booking`**: both carry stale pricing/coupon-code content from a past seasonal promotion. They're included for URL continuity (per your call to keep orphaned pages) but should be updated or removed before linking them anywhere live.
+See [`CHANGELOG.md`](./CHANGELOG.md) for the full, up-to-date list of what's
+outstanding and what's been fixed session-by-session — that's the jumping-off
+point for picking this back up later. Short version as of the last session:
+
+- Video Production's 11 images are actually embedded videos, not yet recovered
+- About page's gallery is missing 7 live Instagram Reels (needs a widget-service decision)
+- `/space`'s 3D Interactive Layout links to a since-deleted SketchUp model
+- Futura PT (paid font) is substituted with the free lookalike Jost
+- Images are re-hosted as-is, unoptimized
+- Netlify isn't yet connected to GitHub for auto-deploy on push
