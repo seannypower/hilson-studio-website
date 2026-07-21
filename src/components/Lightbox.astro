@@ -1,0 +1,161 @@
+---
+interface Props {
+  group: string;
+}
+const { group } = Astro.props as Props;
+---
+
+<div class="lightbox" id={`lightbox-${group}`} data-lightbox-overlay hidden>
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <button class="lightbox-prev" aria-label="Previous">&#8249;</button>
+  <div class="lightbox-content"></div>
+  <button class="lightbox-next" aria-label="Next">&#8250;</button>
+  <p class="lightbox-caption"></p>
+</div>
+
+<script>
+  function setupLightbox(root: ParentNode) {
+    const overlays = root.querySelectorAll('[data-lightbox-overlay]');
+    overlays.forEach((overlay) => {
+      const group = (overlay as HTMLElement).id.replace('lightbox-', '');
+      const triggers = Array.from(root.querySelectorAll(`[data-lightbox-group="${group}"]`));
+      if (!triggers.length) return;
+
+      const content = overlay.querySelector('.lightbox-content')!;
+      const caption = overlay.querySelector('.lightbox-caption')!;
+      let index = 0;
+
+      function render() {
+        const t = triggers[index] as HTMLElement;
+        const type = t.dataset.lightboxType;
+        const src = t.dataset.lightboxSrc || '';
+        const cap = t.dataset.lightboxCaption || '';
+        content.innerHTML =
+          type === 'video'
+            ? `<iframe src="${src}" allow="autoplay; encrypted-media" allowfullscreen title="${cap.replace(/"/g, '&quot;')}"></iframe>`
+            : `<img src="${src}" alt="${cap.replace(/"/g, '&quot;')}" />`;
+        caption.textContent = cap;
+      }
+
+      function open(i: number) {
+        index = i;
+        render();
+        (overlay as HTMLElement).hidden = false;
+        document.body.style.overflow = 'hidden';
+      }
+
+      function close() {
+        (overlay as HTMLElement).hidden = true;
+        content.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+
+      triggers.forEach((t, i) => {
+        t.addEventListener('click', (e) => {
+          e.preventDefault();
+          open(i);
+        });
+      });
+
+      overlay.querySelector('.lightbox-close')?.addEventListener('click', close);
+      overlay.querySelector('.lightbox-prev')?.addEventListener('click', () => {
+        index = (index - 1 + triggers.length) % triggers.length;
+        render();
+      });
+      overlay.querySelector('.lightbox-next')?.addEventListener('click', () => {
+        index = (index + 1) % triggers.length;
+        render();
+      });
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) close();
+      });
+      document.addEventListener('keydown', (e) => {
+        if ((overlay as HTMLElement).hidden) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') { index = (index - 1 + triggers.length) % triggers.length; render(); }
+        if (e.key === 'ArrowRight') { index = (index + 1) % triggers.length; render(); }
+      });
+    });
+  }
+
+  setupLightbox(document);
+</script>
+
+<style is:global>
+  /* Global on purpose: content, iframe, and img inside .lightbox-content
+     are created dynamically via innerHTML in the script below, so they
+     never receive Astro's scoped-style attribute — scoped rules would
+     silently fail to match them. */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 12, 12, 0.92);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .lightbox[hidden] {
+    display: none;
+  }
+
+  .lightbox-content {
+    width: min(92vw, calc(85vh * 16 / 9));
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+
+  .lightbox-content iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .lightbox-caption {
+    color: #f4f4f2;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    text-align: center;
+    max-width: 700px;
+  }
+
+  .lightbox-close,
+  .lightbox-prev,
+  .lightbox-next {
+    position: absolute;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.5rem 1rem;
+  }
+
+  .lightbox-close {
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+  }
+
+  .lightbox-prev { left: 0.5rem; top: 50%; transform: translateY(-50%); }
+  .lightbox-next { right: 0.5rem; top: 50%; transform: translateY(-50%); }
+
+  @media (max-width: 700px) {
+    .lightbox-prev, .lightbox-next { font-size: 2rem; padding: 0.5rem; }
+  }
+</style>

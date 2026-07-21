@@ -1,33 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SoundCloudEmbed from '../components/SoundCloudEmbed.astro';
-import Gallery from '../components/Gallery.astro';
+import Carousel from '../components/Carousel.astro';
 
-const galleryItems = [
-  { src: '/images/artist-02.jpg' },
-  { src: '/images/musician-01.jpg' },
-  { src: '/images/artist-04.jpg' },
-  { src: '/images/artist-01.jpg' },
-  { src: '/images/artist-03.jpg' },
-  { src: '/images/artist-05.jpg' },
+const slides = [
+  { type: 'image', thumb: '/images/artist-02.jpg' },
+  { type: 'image', thumb: '/images/musician-01.jpg' },
+  { type: 'image', thumb: '/images/artist-04.jpg' },
+  { type: 'video', thumb: '/images/artist-01.jpg', src: 'https://www.youtube.com/embed/5MTdLAc3s78?wmode=opaque&enablejsapi=1', caption: 'The Hilson Studio - Virtual Tour' },
+  { type: 'image', thumb: '/images/artist-03.jpg' },
+  { type: 'image', thumb: '/images/artist-05.jpg' },
 ];
 ---
 
 <Layout title="Musician" description="Session musicians and drummers: track drums, guitars, and overdubs at The Hilson Studio, Nashville.">
   <section class="page-hero container">
-    <p class="lede">Capture your performance</p>
-    <h1>Musicians</h1>
-  </section>
-
-  <section class="block container prose">
-    <p>You're the working (wo)man. You've got the chops, and people want to get your wicked skills on their tracks, but studio time is EXPENSIVE. All that load in, set up, dialing in tones for hours and paying for an engineer to sit there and tell you to do another take... he doesn't care, he's hourly.</p>
-    <p>Come to us. We have great sounding drums, almost always set up and ready to be recorded; guitars set up professionally; amps with actual tubes in them; acoustic guitars that have all 6 strings intact. All that, plus a diverse selection of pro-level mics and pres and compressors, selected specifically for what they do with drums and instruments.</p>
-    <p>Book 2 hours if that's all you need. You can come in and knock out your work, and pass the savings on to your clients. Record your guitars direct at home, get them just right, then come in and re-amp them using great gear and digital conversion for killer guitar sounds.</p>
-    <p><a href="/drummers"><strong>Are you a drummer? Click here</strong></a></p>
+    <h1>Capture your performance</h1>
   </section>
 
   <section class="block container">
-    <Gallery items={galleryItems} />
+    <div class="two-col">
+      <div class="prose">
+        <h2>Musicians</h2>
+        <p>You're the working (wo)man. You've got the chops, and people want to get your wicked skills on their tracks, but studio time is EXPENSIVE. All that load in, set up, dialing in tones for hours and paying for an engineer to sit there and tell you to do another take... he doesn't care, he's hourly.</p>
+        <p>Come to us. We have great sounding drums, almost always set up and ready to be recorded; guitars set up professionally; amps with actual tubes in them; acoustic guitars that have all 6 strings intact. All that, plus a diverse selection of pro-level mics and pres and compressors, selected specifically for what they do with drums and instruments.</p>
+        <p>Book 2 hours if that's all you need. You can come in and knock out your work, and pass the savings on to your clients. Record your guitars direct at home, get them just right, then come in and re-amp them using great gear and digital conversion for killer guitar sounds.</p>
+        <p><a href="/drummers"><strong>Are you a drummer? Click here</strong></a></p>
+      </div>
+      <Carousel group="musicians" slides={slides} />
+    </div>
   </section>
 
   <section class="block container prose">

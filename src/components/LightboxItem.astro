@@ -1,0 +1,24 @@
+---
+interface Props {
+  group: string;
+  type: 'image' | 'video';
+  thumb: string;
+  src: string;
+  caption?: string;
+  class?: string;
+}
+const { group, type, thumb, src, caption = '', class: className = '' } = Astro.props as Props;
+---
+
+<button
+  type="button"
+  class={`lightbox-item ${className}`}
+  data-lightbox-group={group}
+  data-lightbox-type={type}
+  data-lightbox-src={src}
+  data-lightbox-caption={caption}
+>
+  <img src={thumb} alt={caption} loading="lazy" />
+  {type === 'video' && <span class="lightbox-play" aria-hidden="true"></span>}
+  {caption && <span class="lightbox-item-caption">{caption}</span>}
+</button>

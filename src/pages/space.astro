@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Carousel from '../components/Carousel.astro';
 
 const rooms = [
   { src: '/images/space-01.jpg', title: 'The basement', text: 'The studio is partially below ground level, which is great for keeping unwanted sounds out, and the rock and roll in.' },
@@ -19,12 +20,16 @@ const rooms = [
   { src: '/images/space-15.jpg', title: 'Eqs', text: 'The studio is full of great places to get artsy and bump up your insta-game.' },
 ];
 
-const buildPhotos = ['space-16', 'space-17', 'space-18', 'space-19', 'space-20', 'space-21'].map((n) => `/images/${n}.jpg`);
+const buildSlides = Array.from({ length: 51 }, (_, i) => ({
+  type: 'image',
+  thumb: `/images/buildphoto-${String(i + 1).padStart(2, '0')}.jpg`,
+  src: `/images/buildphoto-${String(i + 1).padStart(2, '0')}.jpg`,
+}));
 ---
 
 <Layout title="Space" description="A tour of The Hilson Studio's live room, control room, drum corner, vocal booth, and more.">
   <section class="page-hero container">
-    <h1>Virtual Tour</h1>
+    <h1><strong>Virtual Tour</strong></h1>
   </section>
 
   <section class="block container">
@@ -34,7 +39,7 @@ const buildPhotos = ['space-16', 'space-17', 'space-18', 'space-19', 'space-20',
   </section>
 
   <section class="block container">
-    <h2 class="prose center">Photos</h2>
+    <h1><strong>Photos</strong></h1>
     <div class="gallery-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
       {rooms.map((r) => (
         <figure>
@@ -49,20 +54,16 @@ const buildPhotos = ['space-16', 'space-17', 'space-18', 'space-19', 'space-20',
   </section>
 
   <section class="block container">
-    <h2 class="prose center">3D Interactive Layout</h2>
+    <h1><strong>3D Interactive Layout</strong></h1>
     <p class="prose center">Use the arrows in the top right to full screen. Click or Shift-Click and move to navigate, use the scroll wheel to zoom.</p>
-    <div class="embed-wrap embed-16-9" style="max-width: 900px; margin: 0 auto;">
-      <iframe src="https://3dwarehouse.sketchup.com/embed.html?mid=u3f83ffe8-8a7c-4059-9a8b-fbf6a208e93d" title="3D interactive studio layout"></iframe>
+    <div class="stub-note" style="max-width: 700px; margin: 0 auto;">
+      The original 3D model (hosted on SketchUp's 3D Warehouse) has been deleted at the source — the link now 404s on the live site too, so this isn't something the rebuild can recover. Needs a replacement model/tour or this section can be removed.
     </div>
   </section>
 
   <section class="block container">
-    <h2 class="prose center">Studio Build Photos</h2>
+    <h1><strong>Studio Build Photos</strong></h1>
     <p class="prose center">See how it all developed</p>
-    <div class="gallery-grid">
-      {buildPhotos.map((src) => (
-        <img src={src} alt="Studio build" loading="lazy" />
-      ))}
-    </div>
+    <Carousel group="studio-build" slides={buildSlides} />
   </section>
 </Layout>

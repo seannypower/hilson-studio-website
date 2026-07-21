@@ -1,47 +1,49 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SoundCloudEmbed from '../components/SoundCloudEmbed.astro';
-import Gallery from '../components/Gallery.astro';
+import Carousel from '../components/Carousel.astro';
 
-const galleryItems = [
-  { src: '/images/artist-01.jpg' },
-  { src: '/images/artist-02.jpg' },
-  { src: '/images/artist-03.jpg' },
-  { src: '/images/artist-04.jpg' },
-  { src: '/images/artist-05.jpg' },
+const slides = [
+  { type: 'video', thumb: '/images/artist-01.jpg', src: 'https://www.youtube.com/embed/5MTdLAc3s78?wmode=opaque&enablejsapi=1', caption: 'The Hilson Studio - Virtual Tour' },
+  { type: 'image', thumb: '/images/artist-02.jpg' },
+  { type: 'image', thumb: '/images/artist-03.jpg' },
+  { type: 'image', thumb: '/images/artist-04.jpg' },
+  { type: 'image', thumb: '/images/artist-05.jpg' },
 ];
 ---
 
 <Layout title="Artist/Band" description="Recording services for artists and bands at The Hilson Studio, Nashville.">
   <section class="page-hero container">
-    <p class="lede">Find your sound</p>
-    <h1>Artists/Bands</h1>
-  </section>
-
-  <section class="block container prose">
-    <p>You've got a sound, a style, a song. As Bob Ross always said, "All you need...is a few tools, a little instruction, and a vision in your mind." The Hilson Studio is the place to put it all together into one package.</p>
-    <p>Whether it's a gritty acoustic & vocal recording free from hum and hiss you might get in a bedroom, a full rock arrangement with big real drums and electric guitars, or a synth based pop sound with stacked harmonies, it can all be done here.</p>
-    <p>We've got the right gear to get a ton of different sounds, and you may even find some new ones as you work up a single, EP, or full length record. In addition to the facility itself, we have relationships with other musicians if you need to bring in some outside players, for a live string ensemble, vocal harmonies, or those metal blast beats your drummer always struggles with. We won't tell anyone. We're very discreet.</p>
+    <h1>Find your sound</h1>
   </section>
 
   <section class="block container">
-    <Gallery items={galleryItems} />
+    <div class="two-col">
+      <div class="prose">
+        <h2>Artists/Bands</h2>
+        <p>You've got a sound, a style, a song. As Bob Ross always said, "All you need...is a few tools, a little instruction, and a vision in your mind." The Hilson Studio is the place to put it all together into one package.</p>
+        <p>Whether it's a gritty acoustic & vocal recording free from hum and hiss you might get in a bedroom, a full rock arrangement with big real drums and electric guitars, or a synth based pop sound with stacked harmonies, it can all be done here.</p>
+        <p>We've got the right gear to get a ton of different sounds, and you may even find some new ones as you work up a single, EP, or full length record. In addition to the facility itself, we have relationships with other musicians if you need to bring in some outside players, for a live string ensemble, vocal harmonies, or those metal blast beats your drummer always struggles with. We won't tell anyone. We're very discreet.</p>
+      </div>
+      <Carousel group="artistsbands" slides={slides} />
+    </div>
   </section>
 
-  <section class="block container prose">
-    <blockquote class="testimonial">
-      <p>"I've had the opportunity to work with Sean on three projects now. The first time I walked in with a few ideas and some lyrics and left with an entire album that I was extremely proud of. With Sean, you get it all- a quality producer, a talented musician, and an easy to work with business partner."</p>
-      <cite>— Jeremy Simms, Rock/Worship, Birmingham AL</cite>
-    </blockquote>
-    <blockquote class="testimonial">
-      <p>"Sean's experience in the studio and expertise with production make the entire recording process both easy and enjoyable for the artist. Whether I just need vocals recorded or want a fully produced track, The Hilson Studio is a no-brainer choice to get the quality product I am looking for."</p>
-      <cite>— Alxxa, Pop/Electro, Nashville TN</cite>
-    </blockquote>
+  <section class="block container">
+    <div class="testimonial-cols">
+      <blockquote class="testimonial">
+        <p>"I've had the opportunity to work with Sean on three projects now. The first time I walked in with a few ideas and some lyrics and left with an entire album that I was extremely proud of. With Sean, you get it all- a quality producer, a talented musician, and an easy to work with business partner."</p>
+        <cite>— Jeremy Simms<br /><em>Rock/Worship, Birmingham AL</em></cite>
+      </blockquote>
+      <blockquote class="testimonial">
+        <p>"Sean's experience in the studio and expertise with production make the entire recording process both easy and enjoyable for the artist. Whether I just need vocals recorded or want a fully produced track, The Hilson Studio is a no-brainer choice to get the quality product I am looking for."</p>
+        <cite>— Alxxa<br /><em>Pop/Electro, Nashville TN</em></cite>
+      </blockquote>
+    </div>
   </section>
 
-  <section class="block container prose">
-    <h2>Listen to some samples of full production projects</h2>
-    <p>tracked and mixed here at the studio.</p>
+  <section class="block container">
+    <h3 class="embed-lead">Listen to some samples of full production projects tracked and mixed here at the studio.</h3>
     <SoundCloudEmbed url="https://api.soundcloud.com/playlists/192992378" title="Full Production" />
   </section>
 </Layout>

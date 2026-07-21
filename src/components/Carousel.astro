@@ -1,0 +1,66 @@
+---
+import Lightbox from './Lightbox.astro';
+import LightboxItem from './LightboxItem.astro';
+
+interface Slide {
+  type: 'image' | 'video';
+  thumb: string;
+  src: string;
+  caption?: string;
+}
+interface Props {
+  group: string;
+  slides: Slide[];
+}
+const { group, slides } = Astro.props as Props;
+---
+
+<div class="carousel-wrap">
+  <div class="carousel" data-carousel={group}>
+    <div class="carousel-stage">
+      <button type="button" class="carousel-nav carousel-prev" aria-label="Previous slide">&#8249;</button>
+      <div class="carousel-slides">
+        {slides.map((s, i) => (
+          <LightboxItem
+            group={group}
+            type={s.type}
+            thumb={s.thumb}
+            src={s.src}
+            caption={s.caption}
+            class={`carousel-slide ${i === 0 ? 'is-active' : ''}`}
+          />
+        ))}
+      </div>
+      <button type="button" class="carousel-nav carousel-next" aria-label="Next slide">&#8250;</button>
+    </div>
+
+    <div class="carousel-thumbs">
+      {slides.map((s, i) => (
+        <button type="button" class:list={['carousel-thumb-btn', { 'is-active': i === 0 }]} data-index={i} aria-label={`Go to slide ${i + 1}`}>
+          <img src={s.thumb} alt="" loading="lazy" />
+          {s.type === 'video' && <span class="lightbox-play" style="transform:scale(0.55);"></span>}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <Lightbox group={group} />
+
+  <script>
+    document.querySelectorAll('.carousel').forEach((carousel) => {
+      const slideEls = Array.from(carousel.querySelectorAll('.carousel-slide'));
+      const thumbBtns = Array.from(carousel.querySelectorAll('.carousel-thumb-btn'));
+      let active = 0;
+
+      function show(index: number) {
+        active = (index + slideEls.length) % slideEls.length;
+        slideEls.forEach((el, i) => el.classList.toggle('is-active', i === active));
+        thumbBtns.forEach((el, i) => el.classList.toggle('is-active', i === active));
+      }
+
+      carousel.querySelector('.carousel-prev')?.addEventListener('click', () => show(active - 1));
+      carousel.querySelector('.carousel-next')?.addEventListener('click', () => show(active + 1));
+      thumbBtns.forEach((btn, i) => btn.addEventListener('click', () => show(i)));
+    });
+  </script>
+</div>

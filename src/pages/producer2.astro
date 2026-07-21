@@ -4,13 +4,17 @@ import SoundCloudEmbed from '../components/SoundCloudEmbed.astro';
 ---
 
 <Layout title="Producer" description="Real drums, guitars, and vocal booth time for producers at The Hilson Studio, Nashville.">
-  <section class="page-hero container">
-    <h1>Producers</h1>
-  </section>
-
-  <section class="block container prose">
-    <p>You've got your own thing going on. We think that's great. You're working hard, you're out there being creative and working with artists and getting things done. But maybe you're missing that place where you can sneak in and knock out some slamming REAL drum tones. Maybe your vocal booth smells like day old socks and gets 108&deg; in the summer (that's 42&deg; C for our metric friends).</p>
-    <p>You're in luck. We're here for you, and we don't want to poach your clients; we just want to give you a place to shine and give you the best edge when it comes to building your productions.</p>
+  <section class="block container">
+    <div class="two-col">
+      <div class="embed-wrap embed-16-9">
+        <iframe src="https://www.youtube.com/embed/5MTdLAc3s78?wmode=opaque&enablejsapi=1" title="The Hilson Studio - Virtual Tour" allowfullscreen></iframe>
+      </div>
+      <div class="prose">
+        <h1 style="text-align:left;">Producers</h1>
+        <p>You've got your own thing going on. We think that's great. You're working hard, you're out there being creative and working with artists and getting things done. But maybe you're missing that place where you can sneak in and knock out some slamming REAL drum tones. Maybe your vocal booth smells like day old socks and gets 108&deg; in the summer (that's 42&deg; C for our metric friends).</p>
+        <p>You're in luck. We're here for you, and we don't want to poach your clients; we just want to give you a place to shine and give you the best edge when it comes to building your productions.</p>
+      </div>
+    </div>
   </section>
 
   <section class="block container">
@@ -49,26 +53,27 @@ import SoundCloudEmbed from '../components/SoundCloudEmbed.astro';
     </div>
   </section>
 
-  <section class="block container prose">
-    <h2>Testimonials</h2>
-    <blockquote class="testimonial">
-      <p>"Sean's one of the most creative and consistent audio pros I've ever worked with. He's not only a killer engineer/mixer, but he's proficient in a plethora of instruments and I refer a lot of overdub work to him. Whether it's rhythm guitars, drums/percussion, orchestral strings, vocal harmonies, pedal steel...Sean ALWAYS exceeds expectations and delivers beautiful, warm tones."</p>
-      <cite>— Marc Bauman, Owner/Engineer at HouseRecordingStudios.com</cite>
-    </blockquote>
-    <blockquote class="testimonial">
-      <p>"I can say without a doubt this is one of my favorite places to record in Nashville. The drum room is like a chameleon. There isn't a sound Sean hasn't been able to capture that I have needed for any of the number of projects I've recorded there. It's also a comfortable place to spend the day which we all know is so important when trying to capture that magic take."</p>
-      <cite>— Jay Tooke, Nashville based producer</cite>
-    </blockquote>
+  <section class="block container">
+    <h2 class="prose center">Testimonials</h2>
+    <div class="testimonial-cols">
+      <blockquote class="testimonial">
+        <p>"Sean's one of the most creative and consistent audio pros I've ever worked with. He's not only a killer engineer/mixer, but he's proficient in a plethora of instruments and I refer a lot of overdub work to him. Whether it's rhythm guitars, drums/percussion, orchestral strings, vocal harmonies, pedal steel...Sean ALWAYS exceeds expectations and delivers beautiful, warm tones."</p>
+        <cite>— Marc Bauman<br /><em>Owner/Engineer at HouseRecordingStudios.com</em></cite>
+      </blockquote>
+      <blockquote class="testimonial">
+        <p>"I can say without a doubt this is one of my favorite places to record in Nashville. The drum room is like a chameleon. There isn't a sound Sean hasn't been able to capture that I have needed for any of the number of projects I've recorded there. It's also a comfortable place to spend the day which we all know is so important when trying to capture that magic take."</p>
+        <cite>— Jay Tooke<br /><em>Nashville based producer</em></cite>
+      </blockquote>
+    </div>
   </section>
 
   <section class="block container prose">
-    <h2>Hear it for yourself</h2>
-    <p>Check out some tracks built on our drums & guitars.</p>
+    <h1><strong>HEAR IT FOR YOURSELF</strong></h1>
+    <h3 class="embed-lead">Check out some tracks built on our drums &amp; guitars.</h3>
     <div class="embed-wrap embed-16-9" style="max-width: 700px; margin: 0 auto 2rem;">
       <iframe src="https://www.youtube.com/embed/5MTdLAc3s78?wmode=opaque&enablejsapi=1" title="The Hilson Studio virtual tour" allowfullscreen></iframe>
     </div>
-    <h3>Listen to isolated drum tracks</h3>
-    <p>No reverb or samples added. Audio sample plays: Drums (w/o rooms) -&gt; Drums (w/rooms) -&gt; Drums in track</p>
+    <h3 class="embed-lead">Listen to isolated drum tracks. No reverb or samples added. Audio sample plays: Drums (w/o rooms) -&gt; Drums (w/rooms) -&gt; Drums in track</h3>
     <SoundCloudEmbed url="https://api.soundcloud.com/playlists/192995909?secret_token=s-FQ3fa" title="Producer samples" />
     <SoundCloudEmbed url="https://api.soundcloud.com/playlists/193736230" title="Isolated drum tracks" />
   </section>
